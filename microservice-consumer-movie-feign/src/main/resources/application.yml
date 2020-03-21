@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: microservice-consumer-movie-feign
+  redis:
+    host: 120.55.119.77
+    port: 6379
+    pool:
+      max-wait: 10
+      max-idle: 20
+      max-active: 100
+    timeout: 5000
+server:
+  port: 7908
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true  #eureka上微服务显示服务路径
+
+

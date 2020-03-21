@@ -1,0 +1,24 @@
+
+server:
+  port: 8010
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true  #eureka上微服务显示服务路径
+
+spring:
+  application:
+    name: microservice-provider-movie-ribbon
+    cloud:
+        gateway:
+          discovery:
+            locator:
+              enabled: true              #是否与服务注册于发现组件进行结合,设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+              lowerCaseServiceId: true   #该配置开启后，服务名可以小写
+
+    #          spring.cloud.gateway.discovery.locator.lowerCaseServiceId:true 配置这个可以小写

@@ -1,0 +1,19 @@
+
+server:
+  port: 7910
+
+user:
+  userServicePath: http://localhost:7901/simple/
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true  #eureka上微服务显示服务路径
+
+spring:
+  application:
+    name: microservice-provider-movie

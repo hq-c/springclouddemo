@@ -1,0 +1,48 @@
+server:
+  port: 7901
+
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo_springcloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+  #datasource:
+  #  platform: h2
+  #  schema: classpath:schema.sql
+  #  data: classpath:data.sql
+  application:
+    name: microservice-provider-user  #eureka上微服务显示的名称
+  cloud:
+    config:
+      enable: true
+      discovery:
+        enable: true
+
+logging:
+  level:
+    root: INFO
+    com.itmuch: DEBUG
+
+# 配置Eureka Server 信息
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka/
+  # eureak实例定义
+  instance:
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    # 配置使用指定IP
+    instance-id: ${spring.application.name}:${server.port}
+    #${spring.application.name}:${server.port}
+    #instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+
